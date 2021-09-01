@@ -36,18 +36,21 @@ def SimpleSearch():
     #search_term = "#climate+change -filter:retweets"
 
     alinan_search_term = input("aranacak kelimeyi yazin")
-
     search_term = str(alinan_search_term) + " -filter:retweets"
-
+    
+    alinan_since = input("""baslangic tarihini 
+                            yıl-ay-gün formatında giriniz""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
                     lang="tr",
-                    since='2021-08-24').items(1000)
+                    since=since1).items(1000)
 
     all_tweets = [tweet.text for tweet in tweets]
     
     print(all_tweets[0:5])
-    
+#SimpleSearch()  
 
 #Remove URLs
 def remove_url(txt):
@@ -69,42 +72,60 @@ def remove_url(txt):
 
 #Remove URLs (links)
 def SearchWithoutUrl():
-    search_term = "#climate+change -filter:retweets"
+    #search_term = "#climate+change -filter:retweets"
 
+    alinan_search_term = input("aranacak kelimeyi yazin")
+    search_term = str(alinan_search_term) + " -filter:retweets"
+    
+    alinan_since = input("""baslangic tarihini 
+                            yıl-ay-gün formatında giriniz""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
-                    lang="en",
-                    since='2018-11-01').items(1000)
+                    lang="tr",
+                    since=since1).items(1000)
 
     all_tweets = [tweet.text for tweet in tweets]
     all_tweets_no_urls = [remove_url(tweet) for tweet in all_tweets]
     print(all_tweets_no_urls[:5])
-
+#SearchWithoutUrl()
 
 #Create List of Lower Case Words from Tweets
 def WordSplitAndLowering():
-    search_term = "#climate+change -filter:retweets"
+    #search_term = "#climate+change -filter:retweets"
 
+    alinan_search_term = input("aranacak kelimeyi yazin")
+    search_term = str(alinan_search_term) + " -filter:retweets"
+    
+    alinan_since = input("""baslangic tarihini 
+                            yıl-ay-gün formatında giriniz""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
-                    lang="en",
-                    since='2018-11-01').items(1000)
+                    lang="tr",
+                    since=since1).items(1000)
 
     all_tweets = [tweet.text for tweet in tweets]
     all_tweets_no_urls = [remove_url(tweet) for tweet in all_tweets]
 
     print(all_tweets_no_urls[0].lower().split())
 
+#WordSplitAndLowering()
 
 def CountWord():
-    alinan_search_term = input("aranacak kelimeyi yazin")
+    alinan_search_term = input("aranacak kelimeyi yazin \n")
 
     search_term = str(alinan_search_term) + " -filter:retweets"
 
+    alinan_since = input("""baslangic tarihini yıl-ay-gün formatında giriniz \n""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
-                    lang="en",
-                    since='2018-11-01').items(1000)
+                    lang="tr",
+                    since=since1).items(1000)
 
     all_tweets = [tweet.text for tweet in tweets]
     all_tweets_no_urls = [remove_url(tweet) for tweet in all_tweets]
@@ -126,15 +147,20 @@ def CountWord():
                         columns=['kelime', "sayisi"])
     print(clean_tweets_no_urls)
 
+#CountWord()
 
 def DrawTweetPlot():
 
-    search_term = "#climate+change -filter:retweets"
+    alinan_search_term = input("aranacak kelimeyi yazin \n")
+    search_term = str(alinan_search_term) + " -filter:retweets"
 
+    alinan_since = input("""baslangic tarihini yıl-ay-gün formatında giriniz \n""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
-                    lang="en",
-                    since='2018-11-01').items(1000)
+                    lang="tr",
+                    since=since1).items(1000)
 
     all_tweets = [tweet.text for tweet in tweets]
     all_tweets_no_urls = [remove_url(tweet) for tweet in all_tweets]
@@ -170,14 +196,16 @@ def DrawTweetPlot():
 
 def DenemeDrawTweetPlot():
 
-    alinan_search_term = input("aranacak kelimeyi yazin")
-
+    alinan_search_term = input("aranacak kelimeyi yazin \n")
     search_term = str(alinan_search_term) + " -filter:retweets"
 
+    alinan_since = input("""baslangic tarihini yıl-ay-gün formatında giriniz \n""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
-                    lang="en",
-                    since='2018-11-01').items(1000)
+                    lang="tr",
+                    since=since1).items(1000)
 
     all_tweets = [tweet.text for tweet in tweets]
     all_tweets_no_urls = [remove_url(tweet) for tweet in all_tweets]
@@ -220,15 +248,16 @@ def WithoutStopWordsDrawTweetPlot():
     # View a few words from the set
     # print(list(stop_words)[0:10])
 
-    alinan_search_term = input("aranacak kelimeyi yazin")
-
+    alinan_search_term = input("aranacak kelimeyi yazin \n")
     search_term = str(alinan_search_term) + " -filter:retweets"
-  
 
+    alinan_since = input("""baslangic tarihini yıl-ay-gün formatında giriniz \n""")
+    since1 = str(alinan_since)
+    
     tweets = tw.Cursor(api.search,
                     q=search_term,
                     lang="tr",
-                    since='2018-11-01').items(1000)
+                    since=since1).items(1000)
    
     all_tweets = [tweet.text for tweet in tweets]
     all_tweets_no_urls = [remove_url(tweet) for tweet in all_tweets]
@@ -262,4 +291,3 @@ def WithoutStopWordsDrawTweetPlot():
     plt.show()
 
 WithoutStopWordsDrawTweetPlot()
-#SimpleSearch()
